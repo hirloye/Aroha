@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Shadcn UI Default Light Vars */
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Aroha Custom Light Theme */
+    --bg-color: #F0F4F8;
+    --surface: #ffffff;
+    --shadow-light: #ffffff;
+    --shadow-dark: #c8d0e7;
+    
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+
+    /* Global Chakra Gradient Background - Light Mode */
+    --chakra-bg: linear-gradient(
+      135deg, 
+      rgba(240, 244, 248, 1) 0%, /* Baseline fallback bg */
+      rgba(205, 50, 150, 0.05) 15%, /* Crown */
+      rgba(90, 43, 138, 0.05) 30%, /* Third Eye */
+      rgba(30, 144, 200, 0.05) 45%, /* Throat */
+      rgba(30, 144, 150, 0.08) 60%, /* Heart/PrimaryTeal */
+      rgba(255, 140, 0, 0.05) 75%, /* Sacral */
+      rgba(200, 50, 50, 0.05) 90% /* Root */
+    );
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Aroha Custom Dark Theme */
+      --bg-color: #1e1e24;
+      --surface: #272730;
+      
+      --shadow-light: #2c2c36;
+      --shadow-dark: #101012;
+      
+      --slate-800: #f8fafc;
+      --slate-700: #f1f5f9;
+      --slate-600: #e2e8f0;
+      --slate-500: #cbd5e1;
+      --slate-400: #94a3b8;
+
+      /* Global Chakra Gradient Background - Dark Mode */
+      --chakra-bg: linear-gradient(
+        135deg, 
+        rgba(30, 30, 36, 1) 0%, /* Baseline fallback bg */
+        rgba(205, 50, 150, 0.12) 15%, 
+        rgba(90, 43, 138, 0.12) 30%, 
+        rgba(30, 144, 200, 0.12) 45%, 
+        rgba(30, 144, 150, 0.18) 60%, 
+        rgba(255, 140, 0, 0.12) 75%, 
+        rgba(200, 50, 50, 0.12) 90%
+      );
+
+      /* Shadcn UI Default Dark Vars */
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
+      --primary: 217.2 91.2% 59.8%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 212.7 26.8% 83.9%;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
