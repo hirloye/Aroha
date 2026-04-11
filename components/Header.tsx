@@ -32,10 +32,10 @@ export function Header() {
   return (
     <nav className="sticky top-0 z-50 bg-white/60 backdrop-blur-md border-b border-white/20 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 cursor-pointer transition-transform hover:scale-[1.02]">
-            <div className="w-14 h-14 rounded-full shadow-neu-sm flex items-center justify-center bg-background p-1 overflow-hidden">
+            <div className="w-20 h-20 rounded-full shadow-neu-sm flex items-center justify-center bg-background p-1 overflow-hidden">
               <img src="/logo.png" alt="Aroha Wellness Logo" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col justify-center">
@@ -72,9 +72,9 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               className="shadow-neu-sm rounded-xl text-primaryBrand"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
@@ -108,7 +108,7 @@ export function Header() {
               ))}
               <div className="pt-4 px-2">
                 <BookingDialog>
-                  <Button 
+                  <Button
                     className="w-full shadow-neu hover:shadow-neu-inset transition-all duration-300 bg-background text-secondaryBrand hover:bg-background border-none rounded-full py-7 text-lg font-bold"
                     onClick={() => setIsMenuOpen(false)}
                   >

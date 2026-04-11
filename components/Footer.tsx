@@ -22,12 +22,12 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[8fr_3fr_3fr_6fr] gap-8 text-center border-t border-slate-300 pt-8 max-w-7xl mx-auto px-4 md:px-0">
           <div className="flex flex-col items-center">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <img src="/logo.png" alt="Aroha Wellness Logo" className="w-12 h-12 rounded-full object-contain shadow-neu-sm p-0.5 bg-background" />
+              <img src="/logo.png" alt="Aroha Wellness Logo" className="w-20 h-20 rounded-full object-contain shadow-neu-sm p-0.5 bg-background" />
               <span className="text-2xl font-bold text-slate-800">Aroha Wellness</span>
             </div>
             <p className="text-slate-500 mb-6 max-w-xs mx-auto">Elevating holistic health through traditional wisdom and modern tranquility.</p>
             <div className="flex justify-center gap-4">
-              <a href="https://www.instagram.com/iyalhealthcare" target="_blank" rel="noopener noreferrer" className="shrink-0 flex items-center gap-3 px-8 py-4 rounded-full shadow-[6px_6px_12px_#c8ccd0,-6px_-6px_12px_#ffffff] bg-[#F0F4F8] text-slate-700 font-bold hover:text-[#5E2B8A] hover:shadow-[inset_6px_6px_12px_#c8ccd0,inset_-6px_-6px_12px_#ffffff] transition-all duration-300 group outline-none">
+              <a href="https://www.instagram.com/iyalhealthcare" target="_blank" rel="noopener noreferrer" className="shrink-0 flex items-center gap-3 px-8 py-4 rounded-full shadow-neu bg-background text-slate-700 font-bold hover:text-[#5E2B8A] hover:shadow-neu-inset transition-all duration-300 group outline-none">
                 <Instagram className="w-6 h-6 text-[#E1306C]" />
                 @arohawellness
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

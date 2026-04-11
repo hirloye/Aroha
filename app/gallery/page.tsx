@@ -7,18 +7,18 @@ import { X, Play, Instagram, ArrowRight, Quote, Leaf } from "lucide-react";
 const categories = ["All", "Reception", "Treatment Rooms", "Healing Tools", "Flower Medicine"];
 
 const galleryImages = [
-  { id: 1, src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop", category: "Treatment Rooms", alt: "Serene treatment bed with soft lighting" },
-  { id: 2, src: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop", category: "Reception", alt: "Modern, calm reception and waiting area" },
-  { id: 3, src: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1974&auto=format&fit=crop", category: "Healing Tools", alt: "Zen stones and natural elements" },
-  { id: 4, src: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop", category: "Treatment Rooms", alt: "Meditation and relaxation space" },
-  { id: 5, src: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1974&auto=format&fit=crop", category: "Healing Tools", alt: "Herbal teas and holistic remedies" },
-  { id: 6, src: "https://images.unsplash.com/photo-1574015974293-817f0ebebb74?q=80&w=2073&auto=format&fit=crop", category: "Reception", alt: "Lounge area with natural light" },
-  { id: 7, src: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2070&auto=format&fit=crop", category: "Reception", alt: "Herbal tea waiting area" },
-  { id: 8, src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop", category: "Healing Tools", alt: "Acupuncture and cupping tools" },
-  { id: 9, src: "https://images.unsplash.com/photo-1515023115689-589c33041d3c?q=80&w=1974&auto=format&fit=crop", category: "Treatment Rooms", alt: "Private soothing room" },
-  { id: 10, src: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=2070&auto=format&fit=crop", category: "Flower Medicine", alt: "Floral essences and natural remedies" },
-  { id: 11, src: "https://images.unsplash.com/photo-1608222351212-18fe0ec7cebb?q=80&w=1974&auto=format&fit=crop", category: "Flower Medicine", alt: "Custom blending of flower medicine drops" },
-  { id: 12, src: "https://images.unsplash.com/photo-1616246473177-3e1afb561c47?q=80&w=2069&auto=format&fit=crop", category: "Flower Medicine", alt: "Apothecary shelf with botanical healers" },
+  { id: 1, src: "/images/gallery/treatment-room-1.png", category: "Treatment Rooms", alt: "Serene treatment bed with soft lighting" },
+  { id: 2, src: "/images/gallery/reception-1.png", category: "Reception", alt: "Modern, calm reception and waiting area" },
+  { id: 3, src: "/images/gallery/acupuncture-1.png", category: "Healing Tools", alt: "Traditional acupuncture treatment" },
+  { id: 4, src: "/images/gallery/treatment-room-2.png", category: "Treatment Rooms", alt: "Private soothing treatment room" },
+  { id: 5, src: "/images/gallery/traditional-acupuncture-1.png", category: "Healing Tools", alt: "Traditional acupuncture precision" },
+  { id: 6, src: "/images/gallery/cupping-1.png", category: "Healing Tools", alt: "Cupping therapy on upper back" },
+  { id: 7, src: "/images/gallery/cupping-2.png", category: "Healing Tools", alt: "Soothing cupping session" },
+  { id: 8, src: "/images/gallery/acupuncture-2.png", category: "Healing Tools", alt: "Close-up of acupuncture needles" },
+  { id: 9, src: "/images/gallery/acupuncture-3.png", category: "Healing Tools", alt: "Reflective acupuncture needle macro" },
+  { id: 10, src: "/images/gallery/flower-medicine-1.png", category: "Flower Medicine", alt: "Apothecary style flower medicine" },
+  { id: 11, src: "/images/gallery/flower-medicine-2.png", category: "Flower Medicine", alt: "Botanical essences and tinctures" },
+  { id: 12, src: "/images/gallery/traditional-acupuncture-2.png", category: "Healing Tools", alt: "Traditional wisdom meets modern healing" },
 ];
 
 export default function GalleryPage() {
@@ -56,8 +56,8 @@ export default function GalleryPage() {
                 className={`
                   px-8 py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 outline-none
                   ${isActive
-                    ? "shadow-[inset_6px_6px_12px_#c8ccd0,inset_-6px_-6px_12px_#ffffff] text-[#1E9096] bg-[#F0F4F8]"
-                    : "shadow-[6px_6px_12px_#c8ccd0,-6px_-6px_12px_#ffffff] text-slate-500 hover:text-[#5E2B8A] bg-[#F0F4F8]"
+                    ? "shadow-neu-inset text-[#1E9096] bg-background"
+                    : "shadow-neu text-slate-500 hover:text-[#5E2B8A] bg-background"
                   }
                 `}
               >
@@ -98,7 +98,7 @@ export default function GalleryPage() {
                 className="break-inside-avoid mb-6"
               >
                 <div
-                  className="group relative cursor-pointer rounded-3xl border-8 border-[#F0F4F8] bg-[#F0F4F8] shadow-[8px_8px_16px_#c8ccd0,-8px_-8px_16px_#ffffff] transition-all duration-300 hover:shadow-[inset_8px_8px_16px_#c8ccd0,inset_-8px_-8px_16px_#ffffff] overflow-hidden"
+                  className="group relative cursor-pointer rounded-3xl border-8 border-background bg-background shadow-neu transition-all duration-300 hover:shadow-neu-inset overflow-hidden"
                   onClick={() => setSelectedImage(image)}
                 >
                   <div className="overflow-hidden rounded-2xl h-full">
@@ -133,7 +133,7 @@ export default function GalleryPage() {
               <div className="h-1 w-20 bg-gradient-to-r from-primaryBrand to-secondaryBrand mx-auto md:mx-0 rounded-full shadow-neu-sm mb-4"></div>
               <p className="text-slate-600 max-w-xl text-lg">Daily inspiration, holistic tips, and community healing moments.</p>
             </div>
-            <a href="https://www.instagram.com/iyalhealthcare" target="_blank" rel="noopener noreferrer" className="shrink-0 flex items-center gap-3 px-8 py-4 rounded-full shadow-[6px_6px_12px_#c8ccd0,-6px_-6px_12px_#ffffff] bg-[#F0F4F8] text-slate-700 font-bold hover:text-[#5E2B8A] hover:shadow-[inset_6px_6px_12px_#c8ccd0,inset_-6px_-6px_12px_#ffffff] transition-all duration-300 group outline-none">
+            <a href="https://www.instagram.com/iyalhealthcare" target="_blank" rel="noopener noreferrer" className="shrink-0 flex items-center gap-3 px-8 py-4 rounded-full shadow-neu bg-background text-slate-700 font-bold hover:text-[#5E2B8A] hover:shadow-neu-inset transition-all duration-300 group outline-none">
               <Instagram className="w-6 h-6 text-[#E1306C]" />
               @iyalhealthcare
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -142,10 +142,10 @@ export default function GalleryPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              "https://images.unsplash.com/photo-1512101176959-c557f3516787?q=80&w=2070&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1620052731835-cb9d36329eeb?q=80&w=1974&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop",
               "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=2070&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1974&auto=format&fit=crop",
             ].map((imgUrl, i) => (
               <motion.a
                 key={i}
@@ -153,7 +153,7 @@ export default function GalleryPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -8 }}
-                className="relative aspect-square rounded-[2rem] overflow-hidden shadow-[8px_8px_16px_#c8ccd0,-8px_-8px_16px_#ffffff] border-8 border-[#F0F4F8] bg-[#F0F4F8] group block outline-none"
+                className="relative aspect-square rounded-[2rem] overflow-hidden shadow-neu border-8 border-background bg-background group block outline-none"
               >
                 <img src={imgUrl} alt="Instagram Post" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 rounded-xl" />
                 <div className="absolute inset-2 rounded-xl bg-slate-900/0 group-hover:bg-slate-900/40 transition-colors duration-300 flex items-center justify-center">
@@ -183,30 +183,30 @@ export default function GalleryPage() {
               {
                 title: "Traditional Acupuncture",
                 desc: "Ultra-fine, sterile needles designed for painless stimulation of energy meridians.",
-                img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/gallery/traditional-acupuncture-1.png"
               },
               {
-                title: "Cupping Glasses",
+                title: "Cupping Therapy",
                 desc: "Medical-grade cups that create a soothing vacuum to decompress tissues.",
-                img: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop"
+                img: "/images/gallery/cupping-1.png"
               },
               {
-                title: "Herbal Botanicals",
+                title: "Flower Medicine",
                 desc: "Custom-blended tinctures and raw herbs to support healing from within.",
-                img: "https://images.unsplash.com/photo-1620052731835-cb9d36329eeb?q=80&w=1974&auto=format&fit=crop"
+                img: "/images/gallery/flower-medicine-1.png"
               }
             ].map((tool, i) => (
               <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
-                className="rounded-[2.5rem] bg-[#F0F4F8] shadow-[8px_8px_16px_#c8ccd0,-8px_-8px_16px_#ffffff] overflow-hidden flex flex-col group border-4 border-[#F0F4F8]"
+                className="rounded-[2.5rem] bg-background shadow-neu overflow-hidden flex flex-col group border-4 border-background"
               >
                 <div className="h-64 overflow-hidden relative">
                   <img src={tool.img} alt={tool.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
                 </div>
                 <div className="p-8 text-center flex-1 flex flex-col justify-center relative">
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-[#F0F4F8] shadow-[6px_6px_12px_#c8ccd0,-6px_-6px_12px_#ffffff] flex items-center justify-center border-2 border-white">
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-background shadow-neu flex items-center justify-center border-2 border-white/60">
                     <Leaf className="w-5 h-5 text-primaryBrand" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-800 mb-3 mt-2">{tool.title}</h3>
@@ -225,7 +225,7 @@ export default function GalleryPage() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <div className="relative rounded-[3rem] p-12 md:p-20 shadow-[inset_10px_10px_20px_#c8ccd0,inset_-10px_-10px_20px_#ffffff] bg-[#F0F4F8] text-center border-8 border-white/60 overflow-hidden">
+          <div className="relative rounded-[3rem] p-12 md:p-20 shadow-neu-inset bg-background text-center border-8 border-white/60 overflow-hidden">
             {/* Background floating decor */}
             <Quote className="absolute top-8 left-8 w-24 h-24 text-primaryBrand/5 -rotate-12" />
             <Quote className="absolute bottom-8 right-8 w-24 h-24 text-secondaryBrand/5 rotate-12" />
@@ -261,11 +261,11 @@ export default function GalleryPage() {
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-6xl max-h-[90vh] rounded-[2rem] bg-[#F0F4F8] p-4 shadow-[20px_20px_40px_rgba(200,204,208,0.8),-20px_-20px_40px_rgba(255,255,255,0.8)] flex flex-col items-center justify-center border-4 border-white/50"
+              className="relative w-full max-w-6xl max-h-[90vh] rounded-[2rem] bg-background p-4 shadow-neu flex flex-col items-center justify-center border-4 border-white/50"
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-[#F0F4F8] text-slate-500 shadow-[6px_6px_12px_#c8ccd0,-6px_-6px_12px_#ffffff] hover:shadow-[inset_4px_4px_8px_#c8ccd0,inset_-4px_-4px_8px_#ffffff] hover:text-[#5E2B8A] transition-all duration-300 outline-none"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-background text-slate-500 shadow-neu hover:shadow-neu-inset hover:text-[#5E2B8A] transition-all duration-300 outline-none"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -277,7 +277,7 @@ export default function GalleryPage() {
                   className="w-full h-full object-contain max-h-[80vh] rounded-xl"
                 />
 
-                <div className="absolute bottom-6 bg-[#F0F4F8]/90 backdrop-blur-md px-8 py-4 rounded-full shadow-[6px_6px_16px_rgba(200,204,208,0.5),-6px_-6px_16px_rgba(255,255,255,0.8)] border border-white/50 transform translate-y-2">
+                <div className="absolute bottom-6 bg-background/90 backdrop-blur-md px-8 py-4 rounded-full shadow-neu border border-white/50 transform translate-y-2">
                   <p className="font-semibold text-slate-700 text-lg tracking-wide">{selectedImage.alt}</p>
                 </div>
               </div>

@@ -193,7 +193,7 @@ export default function ArohaWellnessPage() {
                 <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" alt="Consultation Office" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>
               <div className="w-full h-80 rounded-3xl shadow-neu bg-background overflow-hidden border-4 border-white/50 group">
-                <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?q=80&w=1974&auto=format&fit=crop" alt="Relaxation Lounge" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                <img src="/images/gallery/reception-1.png" alt="Relaxation Lounge" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>
             </motion.div>
           </div>
