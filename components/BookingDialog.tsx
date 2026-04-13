@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { submitBooking } from "@/app/actions/bookAppointment";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { Sparkles, X } from "lucide-react";
+import { Sparkles, X, Calendar, Clock } from "lucide-react";
+import { CustomCalendar } from "@/components/ui/CustomCalendar";
+import { CustomTimePicker } from "@/components/ui/CustomTimePicker";
+import { AnimatePresence } from "framer-motion";
 
 interface BookingDialogProps {
   children: React.ReactNode;
@@ -23,6 +26,40 @@ interface BookingDialogProps {
 export function BookingDialog({ children }: BookingDialogProps) {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedTime, setSelectedTime] = useState("");
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
+
+  const formatDate = (date: Date | undefined) => {
+    if (!date) return "Select Date";
+    try {
+      return new Intl.DateTimeFormat("en-US", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }).format(date);
+    } catch (e) {
+      return "Select Date";
+    }
+  };
+
+  const formatTime = (timeStr: string) => {
+    if (!timeStr) return "Select Time";
+    try {
+      const [hours, minutes] = timeStr.split(":");
+      const date = new Date();
+      date.setHours(parseInt(hours), parseInt(minutes));
+      return new Intl.DateTimeFormat("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      }).format(date);
+    } catch (e) {
+      return timeStr;
+    }
+  };
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -87,13 +124,82 @@ export function BookingDialog({ children }: BookingDialogProps) {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="date">Date</Label>
-              <Input id="date" name="date" type="date" required />
+            <div className="grid gap-2 relative">
+              <Label>Date</Label>
+              <input 
+                type="hidden" 
+                name="date" 
+                value={selectedDate ? selectedDate.toISOString().split('T')[0] : ""} 
+                required 
+              />
+              <div 
+                onClick={() => {
+                  setShowCalendar(!showCalendar);
+                  setShowTimePicker(false);
+                }}
+                className="relative flex items-center h-12 w-full rounded-xl bg-background shadow-neu-inset px-4 group hover:shadow-neu-sm transition-all duration-300 cursor-pointer"
+              >
+                <span className="flex-1 text-sm font-medium text-slate-700">
+                  {formatDate(selectedDate)}
+                </span>
+                <div className="p-1.5 rounded-lg shadow-neu-sm group-hover:shadow-neu-inset bg-background text-primaryBrand/70 transition-all">
+                  <Calendar className="w-5 h-5" />
+                </div>
+              </div>
+              <AnimatePresence>
+                {showCalendar && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-40" 
+                      onClick={() => setShowCalendar(false)} 
+                    />
+                    <CustomCalendar
+                      selectedDate={selectedDate}
+                      onSelect={setSelectedDate}
+                      onClose={() => setShowCalendar(false)}
+                    />
+                  </>
+                )}
+              </AnimatePresence>
             </div>
-            <div className="grid gap-2">
-              <Label htmlFor="time">Time</Label>
-              <Input id="time" name="time" type="time" required />
+
+            <div className="grid gap-2 relative">
+              <Label>Time</Label>
+              <input 
+                type="hidden" 
+                name="time" 
+                value={selectedTime} 
+                required 
+              />
+              <div 
+                onClick={() => {
+                  setShowTimePicker(!showTimePicker);
+                  setShowCalendar(false);
+                }}
+                className="relative flex items-center h-12 w-full rounded-xl bg-background shadow-neu-inset px-4 group hover:shadow-neu-sm transition-all duration-300 cursor-pointer"
+              >
+                <span className="flex-1 text-sm font-medium text-slate-700">
+                  {formatTime(selectedTime)}
+                </span>
+                <div className="p-1.5 rounded-lg shadow-neu-sm group-hover:shadow-neu-inset bg-background text-secondaryBrand/70 transition-all">
+                  <Clock className="w-5 h-5" />
+                </div>
+              </div>
+              <AnimatePresence>
+                {showTimePicker && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-40" 
+                      onClick={() => setShowTimePicker(false)} 
+                    />
+                    <CustomTimePicker
+                      selectedTime={selectedTime}
+                      onSelect={setSelectedTime}
+                      onClose={() => setShowTimePicker(false)}
+                    />
+                  </>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 

@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Play, Instagram, ArrowRight, Quote, Leaf } from "lucide-react";
+import { X, Play, Instagram, ArrowRight, Quote, Leaf, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect } from "react";
 
 const categories = ["All", "Reception", "Treatment Rooms", "Healing Tools", "Flower Medicine"];
 
@@ -28,6 +29,34 @@ export default function GalleryPage() {
   const filteredImages = activeCategory === "All"
     ? galleryImages
     : galleryImages.filter(img => img.category === activeCategory);
+
+  const handleNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!selectedImage) return;
+    const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
+    const nextIndex = (currentIndex + 1) % filteredImages.length;
+    setSelectedImage(filteredImages[nextIndex]);
+  };
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!selectedImage) return;
+    const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
+    const prevIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
+    setSelectedImage(filteredImages[prevIndex]);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "Escape") setSelectedImage(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage, filteredImages]);
 
   return (
     <div className="pt-10 pb-16 min-h-screen">
@@ -261,24 +290,66 @@ export default function GalleryPage() {
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-6xl max-h-[90vh] rounded-[2rem] bg-background p-4 shadow-neu flex flex-col items-center justify-center border-4 border-white/50"
+              className="relative w-full max-w-6xl max-h-[85vh] rounded-[2rem] bg-background p-3 md:p-4 shadow-neu flex flex-col items-center justify-center border-4 border-white/50 overflow-hidden"
             >
+              {/* Close Button */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-background text-slate-500 shadow-neu hover:shadow-neu-inset hover:text-[#5E2B8A] transition-all duration-300 outline-none"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-background text-slate-500 shadow-neu hover:shadow-neu-inset hover:text-[#5E2B8A] transition-all duration-300 outline-none"
               >
                 <X className="w-6 h-6" />
               </button>
 
-              <div className="w-full h-full rounded-2xl overflow-hidden flex items-center justify-center relative bg-black/5">
-                <img
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  className="w-full h-full object-contain max-h-[80vh] rounded-xl"
-                />
+              {/* Navigation Buttons */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 hidden md:flex items-center justify-center rounded-2xl bg-background/80 backdrop-blur-md text-primaryBrand shadow-neu hover:shadow-neu-inset hover:scale-95 transition-all duration-300 outline-none border border-white/40"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
 
-                <div className="absolute bottom-6 bg-background/90 backdrop-blur-md px-8 py-4 rounded-full shadow-neu border border-white/50 transform translate-y-2">
-                  <p className="font-semibold text-slate-700 text-lg tracking-wide">{selectedImage.alt}</p>
+              <button
+                onClick={handleNext}
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 hidden md:flex items-center justify-center rounded-2xl bg-background/80 backdrop-blur-md text-primaryBrand shadow-neu hover:shadow-neu-inset hover:scale-95 transition-all duration-300 outline-none border border-white/40"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+
+              <div className="w-full h-full rounded-2xl overflow-hidden flex flex-col bg-background/50 backdrop-blur-sm p-2 md:p-6">
+                <div className="flex-1 min-h-0 flex items-center justify-center p-4 relative group/image">
+                  <img
+                    src={selectedImage.src}
+                    alt={selectedImage.alt}
+                    className="max-w-full max-h-full object-contain rounded-xl shadow-2xl border-4 border-white/40 transition-transform duration-500"
+                  />
+
+                  {/* Mobile Navigation Overlays (Visible on touch) */}
+                  <div className="md:hidden absolute inset-0 flex">
+                    <div onClick={handlePrev} className="flex-1 h-full" />
+                    <div onClick={handleNext} className="flex-1 h-full" />
+                  </div>
+                </div>
+
+                <div className="p-6 md:p-8 shrink-0 relative min-h-[100px] flex items-center justify-center">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selectedImage.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="mx-auto max-w-3xl px-10 py-4 rounded-[2.5rem] shadow-neu-inset bg-background border border-white/60 text-center w-full"
+                    >
+                      <p className="font-extrabold text-slate-800 text-2xl md:text-3xl leading-tight tracking-tight mb-2">
+                        {selectedImage.alt}
+                      </p>
+                      <div className="flex items-center justify-center gap-4">
+                        <div className="h-1 w-12 bg-gradient-to-r from-primaryBrand to-transparent rounded-full opacity-40" />
+                        <p className="text-primaryBrand text-sm uppercase tracking-[0.4em] font-black">Aroha Wellness</p>
+                        <div className="h-1 w-12 bg-gradient-to-l from-secondaryBrand to-transparent rounded-full opacity-40" />
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </motion.div>

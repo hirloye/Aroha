@@ -47,7 +47,7 @@ export function Footer() {
             <Link href="/services" className="hover:text-primaryBrand transition-colors">Services</Link>
             <Link href="/gallery" className="hover:text-primaryBrand transition-colors">Our Clinic</Link>
             <Link href="/#faq" className="hover:text-primaryBrand transition-colors">FAQ</Link>
-            <Link href="#" className="hover:text-primaryBrand transition-colors">Privacy Policy</Link>
+            <Link href="/privacy" className="hover:text-primaryBrand transition-colors">Privacy Policy</Link>
           </div>
 
           <div className="flex flex-col items-start space-y-4 text-slate-600 text-left w-full">
