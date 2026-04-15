@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Play, Instagram, ArrowRight, Quote, Leaf, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Play, ArrowRight, Quote, Leaf, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect } from "react";
 
 const categories = ["All", "Reception", "Treatment Rooms", "Healing Tools", "Flower Medicine"];
@@ -163,7 +163,7 @@ export default function GalleryPage() {
               <p className="text-slate-600 max-w-xl text-lg">Daily inspiration, holistic tips, and community healing moments.</p>
             </div>
             <a href="https://www.instagram.com/iyalhealthcare" target="_blank" rel="noopener noreferrer" className="shrink-0 flex items-center gap-3 px-8 py-4 rounded-full shadow-neu bg-background text-slate-700 font-bold hover:text-[#5E2B8A] hover:shadow-neu-inset transition-all duration-300 group outline-none">
-              <Instagram className="w-6 h-6 text-[#E1306C]" />
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#E1306C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               @iyalhealthcare
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -186,7 +186,7 @@ export default function GalleryPage() {
               >
                 <img src={imgUrl} alt="Instagram Post" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 rounded-xl" />
                 <div className="absolute inset-2 rounded-xl bg-slate-900/0 group-hover:bg-slate-900/40 transition-colors duration-300 flex items-center justify-center">
-                  <Instagram className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 </div>
               </motion.a>
             ))}

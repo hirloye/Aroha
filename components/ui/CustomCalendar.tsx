@@ -1,14 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameMonth, isSameDay, isToday } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-// Wait, I don't see date-fns in package.json. Let me check again.
-// Ah, it's NOT in package.json. I shouldn't use it if it's not there.
-// I will use native JS Date logic instead.
 
 interface CustomCalendarProps {
   selectedDate: Date | undefined;
