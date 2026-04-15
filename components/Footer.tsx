@@ -11,7 +11,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 text-center">
         <div className="mb-8">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-8">Ready to start your healing journey?</h2>
-          <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/8015678782" target="_blank" rel="noopener noreferrer">
             <Button className="shadow-neu hover:shadow-neu-inset transition-all duration-300 bg-background text-[#25D366] rounded-full px-8 py-4 text-xl font-bold border-none hover:bg-background flex items-center gap-3 mx-auto">
               <MessageCircle className="w-6 h-6" />
               Chat Now
